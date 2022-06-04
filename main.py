@@ -2,8 +2,8 @@ from instabotApi import InstClient
 from UI import UI
 
 
-def start():
-    ui = UI()
+def start(async_loop):
+    ui = UI(async_loop)
     # cl = InstClient("legion0188", "tornadotop09")
     # userid = cl.get_user_id("lilknoppa")
     # print(userid)
@@ -11,4 +11,5 @@ def start():
 
 
 if __name__ == '__main__':
-    start()
+    async_loop = asyncio.get_event_loop()
+    start(async_loop)
