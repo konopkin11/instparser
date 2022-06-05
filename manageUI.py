@@ -10,17 +10,19 @@ async def start_parse(ui):
     instabotApi.InstClient.proxies = proxy_array
     accounts_log_pass = make_acc_with_log_pass(ui.fileWithAccountsForParse)
     accounts_to_parse = make_acc_to_parse(ui.fileToParse)
-    #f = open(datetime.datetime.today().strftime("%Y-%m-%d-%H.%M.%S"), "w+")
+    # f = open(datetime.datetime.today().strftime("%Y-%m-%d-%H.%M.%S"), "w+")
     tasks = []
     for acc in accounts_log_pass:
         print(acc[0] + " " + acc[1])
         tasks.append(asyncio.create_task(start_one_client(acc[0], acc[1])))
-    results=[]
-    for task in tasks:
-        results.append(await task)
-    for result in results:
-        print(result)
-
+    results = []
+    # for task in tasks:
+    #     res = await task
+    #     print(res)
+    #     if res:
+    #         results.append(res)
+    #
+    # print(str(len(results)) + " yoooo")
 
 
 async def get_clients():
@@ -60,12 +62,12 @@ def write_data(data, file):
 
 async def start_one_client(username, password):
     try:
-        print(username + " e " + password)
         cl = InstClient(username, password)
-        print( " 123")
-        return cl.user_id
+        print("WOW")
+        return cl
     except Exception as e:
         print(e)
+        print("NOT WOW")
         return False
 
 

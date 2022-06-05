@@ -1,5 +1,6 @@
 from instabotApi import InstClient
 from UI import UI
+import asyncio
 
 
 def start(async_loop):

@@ -36,11 +36,11 @@ class InstClient:
             # Instagram limit level
             self.cl.set_proxy(self.next_proxy())
         except (ClientLoginRequired, PleaseWaitFewMinutes, ClientForbiddenError):
-            # Logical level
+            #print("logical error")
+             # Logical level
             self.cl.set_proxy(self.next_proxy())
 
-        print("jopa")
-        self.user_id = self.cl.user_id_from_username(login)
+        self.user_id = self.cl.user_id  # user_id_from_username(login)
 
     def next_proxy(self):
         return random.choices(self.proxies)[0]

@@ -4,6 +4,7 @@ from tkinter import filedialog, messagebox
 from manageUI import *
 import asyncio
 
+
 class UI:
     window = None
     btnStart = None
@@ -53,10 +54,10 @@ class UI:
         if self.fileToParse is None or self.fileWithAccountsForParse is None or self.fileWithProxy is None:
             messagebox.showinfo('Ошибка', 'Вы выбрали не все файлы')
             return
-        #self.window.update_idletasks()
+        # self.window.update_idletasks()
 
         threading.Thread(target=self.__asyncio_thread, args=()).start()
-        #asyncio.run(start_parse(self))
+        # asyncio.run(start_parse(self))
 
     def ask_for_file_to_parse(self):
         self.fileToParse = filedialog.askopenfilename(filetypes=(("Text files", "*.txt"), ("all files", "*.*")))
