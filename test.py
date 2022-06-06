@@ -1,40 +1,29 @@
 import asyncio
 import random
+from instagrapi import Client
+from instabotApi import InstClient
 
-import requests
-
-list = []
-
-
-async def get_json():
-    # 3 асинхронных функции запускаются сразу
-    task1 = asyncio.create_task(get_smth(5))
-    task2 = asyncio.create_task(get_smth(2))
-    task3 = asyncio.create_task(get_smth(3))
-    # значения приходят по выполнению соответствующего таска
-    # после того, что выше, потому что await task означает подожди
-    # до выполнения таска или async'а выше и затем уже чото делай
-    val1 = await task1
-    list.append(val1)
-    print(list)
-    val2 = await task2
-    list.append(val2)
-    print(list)
-    val3 = await task3
-    list.append(val3)
-    print(list)
+def get_json():
+    return 1
 
 
-async def get_smth(number):
-    print(f'thread number {number} started')
-    url = 'https://ru.wikipedia.org/wiki/Путин,_Владимир_Владимирович'
-    r = requests.get(url=url)
+def get_smth():
+    f = open("test.txt", "r")
+    data = f.read().split("||:|")
+    ig_www_claim = data[1].strip()
+    data = data[0].split("||")
+    (login, password) = data[0].split(":")
+    data = data[1].split("|")
+    data1= data[0].split(";")
+    data2 = data[1].split(";")
+    dsuserid= data2[3].split("=")[1]
+    sessionid = data2[len(data2)-1].split("=")[1]
+    cl = Client()
 
-    # типа тут ебать чото жоское высчитывается
-    await asyncio.sleep(number)
-
-    return {f'sleep_time({number})': r.status_code}
+    cl.login_by_sessionid(sessionid)
+    cl.user_id
+    print(data)
 
 
 if __name__ == '__main__':
-    asyncio.run(get_json())
+    get_smth()

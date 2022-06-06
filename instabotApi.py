@@ -55,7 +55,9 @@ class InstClient:
 
     def get_bio(self, user_id=None):  # TODO
         user_id = user_id or self.user_id
-        data = self.cl.user_info(user_id).dict()
+        #data = self.cl.user_info_gql(user_id)
+        data = self.cl.user_info_by_username_v1(user_id)
+        #data = self.cl.user_info(user_id).dict()
         array = []
         for each in data:
             if each != "":
